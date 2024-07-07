@@ -1,0 +1,22 @@
+.{
+    .name = "roc-godot",
+    .version = "0.0.1",
+    .paths = .{
+        "gen",
+        "project",
+        "src",
+        ".gitignore",
+        "LICENSE",
+        "README.md",
+        "build.zig",
+        "build.zig.zon",
+        "mise.toml",
+    },
+    .dependencies = .{
+        .godot_zig = .{
+            .path = "../../godot-zig",
+            //.url = "https://github.com/r-bar/godot-zig/archive/refs/heads/master.tar.gz",
+            //.hash = "1220755c5b5d7f7fc3fc3cb4900c04db194c822515b9bf7e09cc8535d9e4bf1db67c",
+        },
+    },
+}
