@@ -29,8 +29,8 @@ depends = ["clean-gen", "gen-glue", "gen-gdextension-headers"]
 
 [tasks.gen-gdextension-headers]
 description = "Generate the GDExtension headers using godot"
-run = "godot --headless --verbose --dump-entension-api--with-docs --dump-extension-interface --editor --quit"
-cwd = "platform/gen"
+run = "godot --headless --verbose --dump-extension-api--with-docs --dump-extension-interface --editor --quit"
+dir = "platform/gen"
 
 
 [tasks.gen-glue]
