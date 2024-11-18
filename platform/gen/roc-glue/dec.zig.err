@@ -1,0 +1,5 @@
+dec.zig:467:57: error: expected error union type, found 'u128'
+dec.zig:28:51: note: called from here
+dec.zig:317:62: error: expected error union type, found 'u128'
+str.zig:277:20: error: root struct of file 'mem' has no member named 'copy'
+/home/ryan/.local/share/mise/installs/zig/0.13.0/lib/std/mem.zig:1:1: note: struct declared here

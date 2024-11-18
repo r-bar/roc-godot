@@ -14,9 +14,8 @@
     },
     .dependencies = .{
         .godot_zig = .{
-            .path = "../../godot-zig",
-            //.url = "https://github.com/r-bar/godot-zig/archive/refs/heads/master.tar.gz",
-            //.hash = "1220755c5b5d7f7fc3fc3cb4900c04db194c822515b9bf7e09cc8535d9e4bf1db67c",
+            .url = "https://github.com/r-bar/godot-zig/archive/refs/tags/0.0.1.tar.gz",
+            .hash = "1220643f3b5962c5d53a28fdaa482e1ca7f17795e43f3896d920a7917a00cf50a30a",
         },
     },
 }

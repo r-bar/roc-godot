@@ -16,7 +16,7 @@ $CMD
 
 [tasks.clean-gen]
 description = "Remove generated code in the gen directory"
-run = "rm -rf gen"
+run = "rm -rf platform/gen && mkdir platform/gen"
 
 [tasks.clean]
 description = "Remove all build artifacts"
@@ -24,36 +24,21 @@ depends = ["clean-zig-cache", "clean-gen"]
 
 [tasks.gen]
 description = "Rebuild all generated code"
-depends = ["clean-gen", "gen-glue", "gen-gdextension-headers"]
+depends = [
+  #"clean-gen",
+  "gen:glue",
+  #"gen:gdextension-headers",
+]
 
 
-[tasks.gen-gdextension-headers]
+[tasks."gen:gdextension-headers"]
 description = "Generate the GDExtension headers using godot"
 run = "godot --headless --verbose --dump-extension-api--with-docs --dump-extension-interface --editor --quit"
 dir = "platform/gen"
 
 
-[tasks.gen-glue]
-description = "Generate the Roc glue code"
-sources = ["platform/main.roc"]
-run = """
-#!/bin/bash
-
-set -euo pipefail
-
-echo Fetching glue definitions from github.com/roc-lang/roc
-rm -rf platform/gen/roc-main
-mkdir -p platform/gen
-pushd platform/gen
-if [ ! -d roc-main ]; then
-  echo Downloading roc-main.zip
-  wget https://github.com/roc-lang/roc/archive/refs/heads/main.zip -O roc-main.zip
-  unzip roc-main.zip
-fi
-popd
-
-echo Generating Roc glue code using $(roc --version)
-rm -rf platform/gen/roc-glue
-mkdir -p platform/gen/roc-glue
-roc glue platform/gen/roc-main/crates/glue/src/ZigGlue.roc platform/gen/roc-glue platform/main.roc
-"""
+[tasks.build-platform]
+description = "Build the roc platform"
+#depends = ["gen"]
+dir = "platform"
+run = "zig build"
