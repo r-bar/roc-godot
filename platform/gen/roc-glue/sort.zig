@@ -61,7 +61,7 @@ pub fn fluxsort(
     } else {
         if (utils.alloc(len * @sizeOf(usize), @alignOf(usize))) |alloc_ptr| {
             // Build list of pointers to sort.
-            var arr_ptr = @as([*]Opaque, @ptrCast(@alignCast(alloc_ptr)));
+            const arr_ptr = @as([*]Opaque, @ptrCast(@alignCast(alloc_ptr)));
             defer utils.dealloc(alloc_ptr, @alignOf(usize));
             for (0..len) |i| {
                 arr_ptr[i] = array + i * element_width;
@@ -1141,7 +1141,7 @@ pub fn quadsort(
     } else {
         if (utils.alloc(len * @sizeOf(usize), @alignOf(usize))) |alloc_ptr| {
             // Build list of pointers to sort.
-            var arr_ptr = @as([*]Opaque, @ptrCast(@alignCast(alloc_ptr)));
+            const arr_ptr = @as([*]Opaque, @ptrCast(@alignCast(alloc_ptr)));
             defer utils.dealloc(alloc_ptr, @alignOf(usize));
             for (0..len) |i| {
                 arr_ptr[i] = array + i * element_width;
